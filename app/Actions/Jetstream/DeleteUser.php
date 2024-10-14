@@ -13,9 +13,7 @@ class DeleteUser implements DeletesUsers
     /**
      * Create a new action instance.
      */
-    public function __construct(protected DeletesTeams $deletesTeams)
-    {
-    }
+    public function __construct(protected DeletesTeams $deletesTeams) {}
 
     /**
      * Delete the given user.
@@ -37,8 +35,16 @@ class DeleteUser implements DeletesUsers
     {
         $user->teams()->detach();
 
-        $user->ownedTeams->each(function (Team $team) {
-            $this->deletesTeams->delete($team);
+//        $user->ownedTeams->each(function (Team $team) {
+//            $this->deletesTeams->delete($team);
+//        });
+
+        // Usar uma closure que aceita qualquer Eloquent Model
+        $user->ownedTeams->each(function ($team) {
+            // O PHPStan pode não inferir corretamente o tipo aqui, então você pode usar um cast para garantir
+            if ($team instanceof Team) {
+                $this->deletesTeams->delete($team);
+            }
         });
     }
 }

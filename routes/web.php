@@ -16,7 +16,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
 Route::get('/retiro', function () {
     return view('pages.retiro');
 });
