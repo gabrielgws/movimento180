@@ -4,6 +4,7 @@ namespace App\Actions\Jetstream;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Mail\TeamInvitationMail; // Adicione essa linha para importar o novo mailable
 use Closure;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Gate;
@@ -13,7 +14,6 @@ use Illuminate\Validation\Rule;
 use Laravel\Jetstream\Contracts\InvitesTeamMembers;
 use Laravel\Jetstream\Events\InvitingTeamMember;
 use Laravel\Jetstream\Jetstream;
-use Laravel\Jetstream\Mail\TeamInvitation;
 use Laravel\Jetstream\Rules\Role;
 
 class InviteTeamMember implements InvitesTeamMembers
@@ -34,7 +34,8 @@ class InviteTeamMember implements InvitesTeamMembers
             'role' => $role,
         ]);
 
-        Mail::to($email)->send(new TeamInvitation($invitation));
+        // Corrigido: usando o novo mailable
+        Mail::to($email)->send(new TeamInvitationMail($invitation->toArray()));
     }
 
     /**
@@ -55,7 +56,7 @@ class InviteTeamMember implements InvitesTeamMembers
     /**
      * Get the validation rules for inviting a team member.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, array<string>|null>
      */
     protected function rules(Team $team): array
     {
@@ -67,8 +68,8 @@ class InviteTeamMember implements InvitesTeamMembers
                 }),
             ],
             'role' => Jetstream::hasRoles()
-                            ? ['required', 'string', new Role]
-                            : null,
+                ? ['required', 'string', new Role]
+                : null,
         ]);
     }
 
