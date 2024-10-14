@@ -53,7 +53,7 @@ class AddTeamMember implements AddsTeamMembers
     /**
      * Get the validation rules for adding a team member.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\Rule|array<int, \Illuminate\Contracts\Validation\Rule|string>|string>
      */
     protected function rules(): array
     {
