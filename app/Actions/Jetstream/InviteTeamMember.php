@@ -4,7 +4,6 @@ namespace App\Actions\Jetstream;
 
 use App\Models\Team;
 use App\Models\User;
-use App\Mail\TeamInvitationMail; // Adicione essa linha para importar o novo mailable
 use Closure;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Gate;
@@ -15,6 +14,8 @@ use Laravel\Jetstream\Contracts\InvitesTeamMembers;
 use Laravel\Jetstream\Events\InvitingTeamMember;
 use Laravel\Jetstream\Jetstream;
 use Laravel\Jetstream\Rules\Role;
+
+// Adicione essa linha para importar o novo mailable
 
 class InviteTeamMember implements InvitesTeamMembers
 {
@@ -35,7 +36,10 @@ class InviteTeamMember implements InvitesTeamMembers
         ]);
 
         // Corrigido: usando o novo mailable
-        Mail::to($email)->send(new TeamInvitationMail($invitation->toArray()));
+        // Mail::to($email)->send(new TeamInvitationMail($invitation->toArray()));
+        Mail::to($email)->send(new \App\Mail\TeamInvitationMail($invitation));
+
+
     }
 
     /**

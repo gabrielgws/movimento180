@@ -5,34 +5,34 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\TeamInvitation; // Importe o modelo
 
 class TeamInvitationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * @var array<string, mixed> // Definindo o tipo do array
-     */
-    public array $invitation;
+    public $invitation;
 
     /**
      * Create a new message instance.
-     *
-     * @param array<string, mixed> $invitation // Definindo o tipo do parâmetro
      */
-    public function __construct(array $invitation)
+    public function __construct(TeamInvitation $invitation) // Aceitando TeamInvitation
     {
         $this->invitation = $invitation;
     }
 
     /**
      * Build the message.
-     *
-     * @return static
      */
-    public function build(): static
+    public function build()
     {
-        return $this->view('emails.team_invitation')
-            ->with(['invitation' => $this->invitation]);
+        return $this->subject('Team Invitation')
+            ->view('emails.team-invitation')
+            ->with([
+                'invitation' => $this->invitation,
+                'acceptUrl' => route('accept.team-invitation', ['invitation' => $this->invitation->id]),
+            ]);
+
     }
+
 }

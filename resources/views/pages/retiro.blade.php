@@ -1,6 +1,7 @@
 <x-app-layout>
-    <div>
-        Retiro2025
+
+    <div class="w-full flex items-center justify-center bg-blueCustomGws  py-12">
+        <livewire:inscricao-form />
     </div>
 
 </x-app-layout>
