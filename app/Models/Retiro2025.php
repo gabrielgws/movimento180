@@ -24,7 +24,11 @@ class Retiro2025 extends Model
         'bairro_igreja',
         'outra_denominação',
         'vegetariano',
-        'expectativa_retiro'
+        'expectativa_retiro',
+        'carro',
+        'ativo',
+        'descricao',
+        'lote'
     ];
 
     /**

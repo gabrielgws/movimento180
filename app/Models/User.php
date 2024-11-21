@@ -33,7 +33,21 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
+
+    public function getRoleLabelAttribute() {
+        $roles = [
+            0 => 'Super Admin',
+            1 => 'Trindade',
+            2 => 'Líderes',
+            3 => 'Sub-líderes',
+            4 => 'Membros 180',
+            5 => 'User',
+        ];
+
+        return $roles[$this->role] ?? 'Unknown';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -77,6 +91,6 @@ class User extends Authenticatable
 
     public function retiro2025(): HasOne
     {
-        return $this->hasOne(Retiro2025::class);
+        return $this->hasOne(Retiro2025::class, 'user_id', 'id');
     }
 }

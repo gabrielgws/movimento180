@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ObrigadoController;
 use App\Http\Controllers\retiro;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -22,7 +23,25 @@ Route::get('/', function () {
     return view('pages.retiro');
 });
 
+Route::get('/obrigado2', function () {
+    return view('obrigado-2');
+});
+
 Route::get('/dashboard/retiro', [retiro::class, 'index'])->name('pages.retiro.index');
+
+// ROLES
+//Route::middleware(['auth'])->group(function () {
+//    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+//    Route::post('/admin/users/{user}/update-users', [UserController::class, 'updateRole'])->name('admin.users.updateRole');
+//});
+
+// routes/web.php
+
+Route::get('/admin/users/roles', [UserController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('admin.users.index');
+
+
 
 
 Route::get('/dashboard/retiro/{user}/edit', [retiro::class, 'edit'])->name('pages.retiro.edit');
@@ -34,11 +53,6 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin/inscricoes', [App\Http\Controllers\Admin\InscricaoController::class, 'index']);
     Route::patch('/admin/inscricoes/{id}', [App\Http\Controllers\Admin\InscricaoController::class, 'update']);
 });
-
-// Pagina de obrigado
-//Route::get('/obrigado', function () {
-//    return view('obrigado');
-//})->name('obrigado');
 
 Route::get('/obrigado', ObrigadoController::class)->name('obrigado');
 

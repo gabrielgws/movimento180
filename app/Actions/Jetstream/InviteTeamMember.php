@@ -32,7 +32,7 @@ class InviteTeamMember implements InvitesTeamMembers
 
         $invitation = $team->teamInvitations()->create([
             'email' => $email,
-            'role' => $role,
+            'users' => $role,
         ]);
 
         // Corrigido: usando o novo mailable
@@ -49,7 +49,7 @@ class InviteTeamMember implements InvitesTeamMembers
     {
         Validator::make([
             'email' => $email,
-            'role' => $role,
+            'users' => $role,
         ], $this->rules($team), [
             'email.unique' => __('This user has already been invited to the team.'),
         ])->after(
@@ -71,7 +71,7 @@ class InviteTeamMember implements InvitesTeamMembers
                     $query->where('team_id', $team->id);
                 }),
             ],
-            'role' => Jetstream::hasRoles()
+            'users' => Jetstream::hasRoles()
                 ? ['required', 'string', new Role]
                 : null,
         ]);

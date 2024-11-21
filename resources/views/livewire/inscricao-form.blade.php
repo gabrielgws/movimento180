@@ -22,7 +22,7 @@
                 </svg>
 
                 <input wire:model="nome_completo" type="text" id="nome_completo"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Seu nome completo" required/>
             </div>
 
@@ -40,7 +40,7 @@
                 </svg>
 
                 <input wire:model="telefone" type="text" id="telefone"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Seu telefone ( com DDD )" required/>
             </div>
 
@@ -60,7 +60,7 @@
                 </svg>
 
                 <input wire:model="birthday" type="text" id="birthday"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Data de nascimento (abaixo de 16 anos apenas com responsável legal)" required/>
             </div>
 
@@ -85,7 +85,7 @@
                 </svg>
 
                 <input wire:model="cpf" type="text" id="cpf"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="CPF" required/>
             </div>
 
@@ -106,7 +106,7 @@
                 </svg>
 
                 <input wire:model="rg" type="text" id="rg"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="RG" required/>
             </div>
 
@@ -129,8 +129,8 @@
                 </svg>
 
                 <select wire:model="adventista" id="adventista"
-                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
-                        required >
+                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
+                        required>
                     <option value="">Você é adventista?</option>
                     <option value="0">Sim, sou batizado.</option>
                     <option value="1">Não sou adventista.</option>
@@ -163,7 +163,7 @@
                 </svg>
 
                 <input wire:model="bairro_igreja" type="text" id="bairro_igreja"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Se adventista, qual o bairro e cidade da sua igreja?"/>
             </div>
 
@@ -181,7 +181,7 @@
                 </svg>
 
                 <input wire:model="outra_denominação" type="text" id="outra_denominação"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Se de outra denominação, qual seria? ( Batista, Presbiteriano, Metodista, Católico, etc...)"/>
             </div>
 
@@ -203,7 +203,8 @@
                 </svg>
 
                 <select wire:model="vegetariano" id="vegetariano"
-                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11" required>
+                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
+                        required>
                     <option value="">Você é Vegetariano?</option>
                     <option value="0">Sim</option>
                     <option value="1">Sim e Vegano</option>
@@ -229,8 +230,8 @@
                 </svg>
 
                 <select wire:model="forma_pagamento" id="forma_pagamento"
-                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
-                        required >
+                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
+                        required>
                     <option value="">Forma de Pagamento</option>
                     <option value="a_vista">À vista</option>
                     <option value="dividido">Dividido</option>
@@ -238,6 +239,33 @@
             </div>
 
             @error('forma_pagamento') <span class="text-redCustom text-sm pl-4">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Carro / Carona -->
+        <div class="relative z-0 w-full mb-4 group">
+            <div class="relative rounded-[5px] flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-car pointer-events-none absolute left-3 h-5 w-5 text-white ml-1">
+                    <path
+                        d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                    <circle cx="7" cy="17" r="2"/>
+                    <path d="M9 17h6"/>
+                    <circle cx="17" cy="17" r="2"/>
+                </svg>
+
+                <select wire:model="carro" id="carro"
+                        class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
+                        required>
+                    <option value="">Você irá de carro?</option>
+                    <option value="0">Sim e posso dar carona</option>
+                    <option value="1">Sim e não tenho espaço para carona</option>
+                    <option value="2">Não e preciso de carona</option>
+                    <option value="3">Não, mas já tenho carona</option>
+                </select>
+            </div>
+
+            @error('carro') <span class="text-redCustom text-sm pl-4">{{ $message }}</span> @enderror
         </div>
 
         <!-- Expectativa para o Retiro 180º -->
@@ -252,7 +280,7 @@
                 </svg>
 
                 <textarea wire:model="expectativa_retiro" id="expectativa_retiro"
-                          class="w-full rounded-3xl border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                          class="w-full rounded-3xl border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                           placeholder="O que você espera encontrar no Retiro 180º?!"
                           rows="4"></textarea>
             </div>
@@ -271,7 +299,7 @@
                 </svg>
 
                 <input wire:model="email" type="email" id="email"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="E-mail" required/>
             </div>
 
@@ -290,7 +318,7 @@
                 </svg>
 
                 <input wire:model="password" type="password" id="password" name="floating_password"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Senha" required/>
             </div>
 
@@ -311,13 +339,15 @@
 
                 <input wire:model="password_confirmation" type="password" id="password_confirmation"
                        name="floating_confirm_password"
-                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white pl-11"
+                       class="h-14 w-full rounded-full border border-black bg-black px-3 py-4 text-sm leading-[22.4px] text-white placeholder-gray-100 outline-none hover:border hover:border-white focus:border-white focus:ring-0 pl-11"
                        placeholder="Confirmar senha" required/>
             </div>
 
             @error('password_confirmation') <span class="text-redCustom text-sm pl-4">{{ $message }}</span> @enderror
         </div>
 
+        <!-- Campo Lote (oculto, se necessário) -->
+        <input type="hidden" name="lote" wire:model="lote" value="{{ $lote }}">
 
         <!-- Botão de Envio -->
         <div class="flex justify-stretch">

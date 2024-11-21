@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('rg');
             $table->enum('forma_pagamento', ['a_vista', 'dividido']);
             $table->boolean('pagamento_realizado')->default(false);
-            $table->string('lote')->default('lote-1');
+            $table->string('lote')->default('lote-2');
 
             // Campos para as novas perguntas
 //            $table->enum('adventista', [

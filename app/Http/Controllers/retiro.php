@@ -33,6 +33,10 @@ class retiro extends Controller
         $request->validate([
             'pagamento_realizado' => 'required|boolean',
             'forma_pagamento' => 'nullable|string',
+            'ativo' => 'nullable|boolean',
+            'descricao' => 'nullable|string',
+            'carro' => 'nullable|in:0,1,2,3,4,5',
+            'lote' => 'nullable|string',
         ]);
 
         $user->retiro2025()->updateOrCreate(
@@ -40,9 +44,16 @@ class retiro extends Controller
             [
                 'pagamento_realizado' => $request->pagamento_realizado,
                 'forma_pagamento' => $request->forma_pagamento,
+                'ativo' => $request->input('ativo'),
+                'descricao' => $request->input('descricao'),
+                'carro' => $request->input('carro'),
+                'lote' => $request->input('lote'),
             ]
         );
 
-        return redirect()->route('pages.retiro.index')->with('success', 'Informações atualizadas com sucesso.');
+        // return redirect()->route('pages.retiro.index')->with('success', 'Informações atualizadas com sucesso.');
+        return redirect()->route('pages.retiro.edit', $user->id)
+            ->with('success', 'Dados atualizado com sucesso!');
+
     }
 }

@@ -25,10 +25,20 @@ class InscricaoForm extends Component
     public $outra_denominação;
     public $vegetariano;
     public $expectativa_retiro;
+    public $carro;
+
+    public $search = '';
 
     public $email;
     public $password;
     public $password_confirmation;
+
+    public $lote;
+
+    public function mount()
+    {
+        $this->lote = env('LOTE_ATUAL', 'lote-2');
+    }
 
     protected $rules = [
         'nome_completo' => 'required|string|max:255',
@@ -44,6 +54,7 @@ class InscricaoForm extends Component
         'outra_denominação' => 'nullable|string|max:255',
 //        'vegetariano' => 'required|in:Sim,Sim, e vegano.,Não',
         'vegetariano' => 'required|in:0,1,2',
+        'carro' => 'required|in:0,1,2,3,4,5',
         'expectativa_retiro' => 'nullable|string',
         'password' => 'required|string|min:8|same:password_confirmation',
     ];
@@ -65,6 +76,7 @@ class InscricaoForm extends Component
             'forma_pagamento.required' => 'Escolha uma forma de pagamento.',
             'adventista.required' => 'Por favor, selecione sua condição adventista.',
             'vegetariano.required' => 'Informe se você é vegetariano.',
+            'carro.required' => 'Por favor, selecione uma opção.',
             'password.required' => 'A senha é obrigatória.',
             'password.min' => 'A senha deve ter no mínimo 8 caracteres.',
             'password.same' => 'As senhas devem coincidir.',
@@ -78,6 +90,8 @@ class InscricaoForm extends Component
 
         // Converte a data de nascimento para o formato esperado pelo banco de dados (yyyy-mm-dd)
         $birthday = Carbon::createFromFormat('d/m/Y', $this->birthday)->format('Y-m-d');
+
+        $this->lote = env('LOTE_ATUAL', 'lote-2');
 
         $user = User::create([
             'name' => $this->nome_completo,
@@ -99,7 +113,9 @@ class InscricaoForm extends Component
             'bairro_igreja' => $this->bairro_igreja,
             'outra_denominação' => $this->outra_denominação,
             'vegetariano' => $this->vegetariano,
+            'carro' => $this->carro,
             'expectativa_retiro' => $this->expectativa_retiro,
+            'lote' => $this->lote,
         ]);
 
 //        session()->flash('message', 'Inscrição realizada com sucesso!');

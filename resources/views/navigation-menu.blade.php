@@ -26,6 +26,16 @@
                         </x-nav-link>
                     </div>
                 @endif
+
+                {{-- Retiro 2025--}}
+                @if(Auth::user() && (Auth::user()->role === 0 ))
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link href="{{ route('admin.users.index') }}"
+                                    :active="request()->routeIs('admin.users.index')">
+                            {{ __('Role') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -87,7 +97,7 @@
                     @endif
 
                 @endif
-                {{--end check user role--}}
+                {{--end check user users--}}
 
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
