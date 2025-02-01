@@ -1,9 +1,11 @@
 <?php
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\ObrigadoController;
 use App\Http\Controllers\retiro;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -42,8 +44,6 @@ Route::get('/admin/users/roles', [UserController::class, 'index'])
     ->name('admin.users.index');
 
 
-
-
 Route::get('/dashboard/retiro/{user}/edit', [retiro::class, 'edit'])->name('pages.retiro.edit');
 Route::put('/dashboard/retiro/{user}', [retiro::class, 'update'])->name('pages.retiro.update');
 
@@ -75,5 +75,11 @@ Route::get('/send-test-email', function () {
 // Gereciamento de times
 Route::get('/team-invitations/accept/{invitation}', 'TeamInvitationController@accept')
     ->name('accept.team-invitation');
+
+
+// ROTA PARA DOWNLOAD EXCEL
+Route::get('export-users', function () {
+    return Excel::download(new UsersExport, 'usuarios.xlsx');
+});
 
 

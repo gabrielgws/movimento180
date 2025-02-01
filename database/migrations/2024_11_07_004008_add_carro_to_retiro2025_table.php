@@ -19,8 +19,6 @@ return new class extends Migration
                 // 1 - Sim e não tenho espaço para carona
                 // 2 - Não e preciso de carona
                 // 3 - Não, mas já tenho carona
-                // 4 - Sim
-                // 5 - Sim
             ])->nullable()->after('vegetariano');
         });
     }

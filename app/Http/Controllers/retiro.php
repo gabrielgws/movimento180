@@ -9,26 +9,51 @@ use Illuminate\Http\Request;
 class retiro extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $user = auth()->user();
+        $perPage = $request->input('per_page', 5);
+        $status = $request->input('status', 'all'); // Pode ser 'active', 'inactive' ou 'all'
+        $search = $request->input('search', ''); // Campo de pesquisa
 
-        if ($user->role === 0) {
-            $usuarios = User::whereHas('retiro2025')->get();
-            return view('pages.retiro.index', compact('usuarios'));
-        } else {
-            $usuarios = User::whereHas('retiro2025')->get();
-            return view('pages.retiro.index', compact('usuarios'));
+        $query = User::whereHas('retiro2025');
+
+        // Aplicando filtro de status
+        if ($status === 'active') {
+            $query->whereHas('retiro2025', function ($q) {
+                $q->where('ativo', true);
+            });
+        } elseif ($status === 'inactive') {
+            $query->whereHas('retiro2025', function ($q) {
+                $q->where('ativo', false);
+            });
         }
+
+        // Aplicando pesquisa se houver
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('retiro2025', function ($q2) use ($search) {
+                    $q2->where('nome_completo', 'like', "%$search%")
+                        ->orWhere('telefone', 'like', "%$search%")
+                        ->orWhere('cpf', 'like', "%$search%")
+                        ->orWhere('rg', 'like', "%$search%");
+                });
+            });
+        }
+
+        $usuarios = $query->paginate($perPage);
+
+        return view('pages.retiro.index', compact('usuarios'));
     }
 
 
-    public function edit(User $user)
+    public
+    function edit(User $user)
     {
         return view('pages.retiro.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public
+    function update(Request $request, User $user)
     {
         $request->validate([
             'pagamento_realizado' => 'required|boolean',
