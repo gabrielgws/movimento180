@@ -72,6 +72,7 @@
                             <option value="">Selecione</option>
                             <option value="lote-1">Lote 1</option>
                             <option value="lote-2">Lote 2</option>
+                            <option value="lote-3">Lote 3</option>
                             <!-- Adicione mais opções de lotes conforme necessário -->
                         </select>
                     </th>

@@ -97,10 +97,17 @@ class SearchUsers extends Component
             });
         }
 
+        // Filtro para Carro
+        if (!empty($this->filtroCarro) || $this->filtroCarro === '0') {
+            $query->whereHas('retiro2025', function ($q) {
+                $q->where('carro', $this->filtroCarro);
+            });
+        }
+
+
         // Filtro para Adventista
         if ($this->filtroAdventista !== null) {
             $query->whereHas('retiro2025', function ($q) {
-                // Verifica se o valor de filtroAdventista não está vazio e aplica o filtro
                 if ($this->filtroAdventista !== '') {
                     $q->where('adventista', $this->filtroAdventista);
                 }
@@ -111,13 +118,6 @@ class SearchUsers extends Component
         if ($this->filtroVegetariano !== null && $this->filtroVegetariano !== '') {
             $query->whereHas('retiro2025', function ($q) {
                 $q->where('vegetariano', $this->filtroVegetariano);
-            });
-        }
-
-        // Filtro para Carro
-        if ($this->filtroCarro !== null) {
-            $query->whereHas('retiro2025', function ($q) {
-                $q->where('carro', $this->filtroCarro);
             });
         }
 

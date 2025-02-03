@@ -91,7 +91,7 @@ class InscricaoForm extends Component
         // Converte a data de nascimento para o formato esperado pelo banco de dados (yyyy-mm-dd)
         $birthday = Carbon::createFromFormat('d/m/Y', $this->birthday)->format('Y-m-d');
 
-        $this->lote = env('LOTE_ATUAL', 'lote-2');
+        $this->lote = env('LOTE_ATUAL', 'lote-3');
 
         $user = User::create([
             'name' => $this->nome_completo,
